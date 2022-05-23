@@ -1,0 +1,261 @@
+// variables 
+var money = 0;
+var workers = 0;
+var suppliers = 0;
+var moral = 0;
+var unions = 0;
+var breaks = 0;
+var coders = 0;
+var employers = 0;
+
+function save(){
+    var save = {
+        money: money,
+        workers: workers,
+        suppliers: supliers,
+        moral: moral,
+        unions: unions,
+        breaks: breaks,
+        coders: coders,
+        employers: employers
+    }
+    localStorage.setItem("save",JSON.stringify(save));
+    
+    // show Saved for 1 second only
+    document.getElementById('savebox').innerHTML = "Saved!";
+    console.log("Saved");
+}
+
+function load(){
+    var savegame = JSON.parse(localStorage.getItem("save"));
+
+    money = savegame ? savegame.money : 0;
+    workers = savegame ? savegame.workers : 0;
+    supliers = savegame ? savegame.supliers : 0;
+    moral = savegame ? savegame.moral : 0;
+    unions = savegame ? savegame.unions : 0;
+    breaks = savegame ? savegame.breaks : 0;
+    coders = savegame ? savegame.coders : 0;
+    employers = savegame ? savegame.employers : 0;
+
+    document.getElementById('workers').innerHTML = workers;
+    var nextCost = Math.floor(15 * Math.pow(1.15,workers));
+    document.getElementById('workersCost').innerHTML = nextCost;
+
+    document.getElementById('supliers').innerHTML = supliers;
+    var nextCost = Math.floor(100 * Math.pow(1.15,supliers));
+    document.getElementById('supliersCost').innerHTML = nextCost;
+
+    document.getElementById('moral').innerHTML = moral;
+    var nextCost = Math.floor(500 * Math.pow(1.15,moral));
+    document.getElementById('moralCost').innerHTML = nextCost;
+
+    document.getElementById('unions').innerHTML = unions;
+    var nextCost = Math.floor(5000 * Math.pow(1.15,unions));
+    document.getElementById('unionsCost').innerHTML = nextCost;
+
+    document.getElementById('breaks').innerHTML = breaks;
+    var nextCost = Math.floor(15000 * Math.pow(1.15,breaks));
+    document.getElementById('breaksCost').innerHTML = nextCost;
+    
+    document.getElementById('coders').innerHTML = coders;
+    var nextCost = Math.floor(60000 * Math.pow(1.15,coders));
+    document.getElementById('codersCost').innerHTML = nextCost;
+
+    document.getElementById('employers').innerHTML = employers;
+    var nextCost = Math.floor(140000 * Math.pow(1.15,employers));
+    document.getElementById('employersCost').innerHTML = nextCost;
+    
+}
+
+load();
+
+// console message
+console.log("[!] Cheating ruins the fun... or are you looking for a bug? [!]")
+
+// save automatically
+window.setInterval(function(){
+ save();
+}, 30000);
+
+// save when close window
+window.onbeforeunload = closingCode;
+function closingCode(){
+   save();
+   return null;
+}
+
+function wipesave(){
+    alert("Wiped save successfully.")
+    localStorage.removeItem("save");
+    load();
+}
+
+function clickClick(number){
+    clicks = clicks + number;
+    document.getElementById("clicks").innerHTML = clicks;
+    document.getElementById('savebox').innerHTML = "";
+};
+
+function buyCursor(){
+    var cursorCost = Math.floor(15 * Math.pow(1.15,cursors));     //works out the cost of this cursor
+    if(clicks >= cursorCost){                                   //checks that the player can afford the cursor
+        cursors = cursors + 1;                                   //increases number of cursors
+    	clicks = clicks - cursorCost;                          //removes the clicks spent
+        document.getElementById('cursors').innerHTML = cursors;  //updates the number of cursors for the player
+        document.getElementById('clicks').innerHTML = clicks;  //updates the number of clicks for the player
+    };
+    var nextCost = Math.floor(15 * Math.pow(1.15,cursors));       //works out the cost of the next cursor
+    document.getElementById('cursorCost').innerHTML = nextCost;  //updates the cursor cost for the player
+};
+
+window.setInterval(function(){
+clickClick(cursors);
+}, 10000);
+
+
+function buyCardboardBox(){
+    var cardboardboxCost = Math.floor(100 * Math.pow(1.15,cardboardboxes));     //works out the cost of this cardboardbox
+    if(clicks >= cardboardboxCost){                                   //checks that the player can afford the cardboardbox
+        cardboardboxes = cardboardboxes + 1;                                   //increases number of cardboardboxes
+        clicks = clicks - cardboardboxCost;                          //removes the clicks spent
+        document.getElementById('cardboardboxes').innerHTML = cardboardboxes;  //updates the number of cardboardboxes for the player
+        document.getElementById('clicks').innerHTML = clicks;  //updates the number of clicks for the player
+    };
+    var nextCost = Math.floor(100 * Math.pow(1.15,cardboardboxes));       //works out the cost of the next cardboardbox
+    document.getElementById('cardboardboxCost').innerHTML = nextCost;  //updates the cardboardbox cost for the player
+};
+
+window.setInterval(function(){
+clickClick(cardboardboxes);
+clickClick(cardboardboxes);
+}, 1000);
+
+
+function buyCactus(){
+    var cactusCost = Math.floor(500 * Math.pow(1.15,cacti));     //works out the cost of this cactus
+    if(clicks >= cactusCost){                                   //checks that the player can afford the cactus
+        cacti = cacti + 1;                                   //increases number of cacti
+        clicks = clicks - cactusCost;                          //removes the clicks spent
+        document.getElementById('cacti').innerHTML = cacti;  //updates the number of cacti for the player
+        document.getElementById('clicks').innerHTML = clicks;  //updates the number of clicks for the player
+    };
+    var nextCost = Math.floor(500 * Math.pow(1.15,cacti));       //works out the cost of the next cactus
+    document.getElementById('cactusCost').innerHTML = nextCost;  //updates the cactus cost for the player
+};
+
+window.setInterval(function(){
+clickClick(cacti);
+clickClick(cacti);
+clickClick(cacti);
+clickClick(cacti);
+clickClick(cacti);
+}, 250);
+
+
+function buyCabinet(){
+    var cabinetCost = Math.floor(5000 * Math.pow(1.15,cabinets));     //works out the cost of this cabinet
+    if(clicks >= cabinetCost){                                   //checks that the player can afford the cabinet
+        cabinets = cabinets + 1;                                   //increases number of cabinets
+        clicks = clicks - cabinetCost;                          //removes the clicks spent
+        document.getElementById('cabinets').innerHTML = cabinets;  //updates the number of cabinets for the player
+        document.getElementById('clicks').innerHTML = clicks;  //updates the number of clicks for the player
+    };
+    var nextCost = Math.floor(5000 * Math.pow(1.15,cabinets));       //works out the cost of the next cabinet
+    document.getElementById('cabinetCost').innerHTML = nextCost;  //updates the cabinet cost for the player
+};
+
+window.setInterval(function(){
+clickClick(cabinets);
+clickClick(cabinets);
+clickClick(cabinets);
+clickClick(cabinets);
+clickClick(cabinets);
+clickClick(cabinets);
+clickClick(cabinets);
+clickClick(cabinets);
+clickClick(cabinets);
+clickClick(cabinets);
+clickClick(cabinets);
+clickClick(cabinets);
+clickClick(cabinets);
+clickClick(cabinets);
+clickClick(cabinets);
+clickClick(cabinets);
+clickClick(cabinets);
+clickClick(cabinets);
+clickClick(cabinets);
+clickClick(cabinets);
+
+}, 100);
+
+
+function buyCafe(){
+    var cafeCost = Math.floor(15000 * Math.pow(1.15,cafes));     //works out the cost of this cafe
+    if(clicks >= cafeCost){                                   //checks that the player can afford the cafe
+        cafes = cafes + 1;                                   //increases number of cafes
+        clicks = clicks - cafeCost;                          //removes the clicks spent
+        document.getElementById('cafes').innerHTML = cafes;  //updates the number of cafes for the player
+        document.getElementById('clicks').innerHTML = clicks;  //updates the number of clicks for the player
+    };
+    var nextCost = Math.floor(15000 * Math.pow(1.15,cafes));       //works out the cost of the next cafe
+    document.getElementById('cafeCost').innerHTML = nextCost;  //updates the cafe cost for the player
+};
+
+window.setInterval(function(){
+clickClick(cafes);
+clickClick(cafes);
+clickClick(cafes);
+clickClick(cafes);
+clickClick(cafes);
+clickClick(cafes);
+clickClick(cafes);
+clickClick(cafes);
+clickClick(cafes);
+clickClick(cafes);
+clickClick(cafes);
+clickClick(cafes);
+clickClick(cafes);
+clickClick(cafes);
+clickClick(cafes);
+clickClick(cafes);
+clickClick(cafes);
+clickClick(cafes);
+clickClick(cafes);
+clickClick(cafes);
+}, 25);
+
+function buyCodercat(){
+    var codercatCost = Math.floor(15000 * Math.pow(1.15,codercats));     //works out the cost of this codercat
+    if(clicks >= codercatCost){                                   //checks that the player can afford the codercat
+       codercats = codercats + 1;                                   //increases number of codercats
+        clicks = clicks - codercatCost;                          //removes the clicks spent
+        document.getElementById('codercats').innerHTML = codercats;  //updates the number of codercats for the player
+        document.getElementById('clicks').innerHTML = clicks;  //updates the number of clicks for the player
+    };
+    var nextCost = Math.floor(15000 * Math.pow(1.15,codercats));       //works out the cost of the next codercat
+    document.getElementById('codercatCost').innerHTML = nextCost;  //updates the codercat cost for the player
+};
+
+window.setInterval(function(){
+clickClick(cybertune);
+}, 1);
+
+function buyCybertune(){
+    var cybertuneCost = Math.floor(15000 * Math.pow(1.15,cybertunes));     //works out the cost of this codercat
+    if(clicks >= cybertuneCost){                                   //checks that the player can afford the codercat
+       cybertunes = cybertunes + 1;                                   //increases number of codercats
+        clicks = clicks - cybertuneCost;                          //removes the clicks spent
+        document.getElementById('cybertunes').innerHTML = cybertunes;  //updates the number of codercats for the player
+        document.getElementById('clicks').innerHTML = clicks;  //updates the number of clicks for the player
+    };
+    var nextCost = Math.floor(15000 * Math.pow(1.15,cybertunes));       //works out the cost of the next cybertune
+    document.getElementById('cybertuneCost').innerHTML = nextCost;  //updates the cybertune cost for the player
+};
+
+window.setInterval(function(){
+clickClick(cybertunes);
+clickClick(cybertunes);
+clickClick(cybertunes);
+clickClick(cybertunes);
+}, 0.1);
