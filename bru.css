@@ -1,0 +1,89 @@
+* {
+  font-size: 14px;
+}
+
+body {
+  background-color: white;
+  margin: 5px;
+}
+
+button {
+  color: black;
+  background: darkgrey;
+  border: 1px solid black;
+  margin: 2px;
+  padding: 2px;
+  filter: drop-shadow(8px 8px 10px gray);
+}
+button:active {
+  animation: heart-pulse 0.1s ease-out;
+}
+
+.buybuildingbutton {
+  color: black;
+  background: darkgrey;
+  border: 1px solid black;
+  margin: 2px;
+  width: 200px;
+  padding: 2px;
+  filter: drop-shadow(8px 8px 10px gray);
+}
+.buybuildingbutton:active {
+  animation: heart-pulse 0.1s ease-out;
+}
+
+button-red {
+color: red;
+  background: darkgrey;
+  border: 1px solid red;
+  margin: 2px;
+  padding: 2px;
+filter: drop-shadow(8px 8px 10px gray);
+}
+
+span-clicks {
+  font-size: 15px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 900;
+  margin-left: 200px;
+  margin-top: 250px;
+}
+
+td{
+cursor: pointer;
+}
+
+.buildingbox {
+  padding: 10px;
+  border-width: 5px;
+  border-color: black;
+  background-color:lightgray;
+}
+
+.clickbutton {
+  width: 300px;
+  margin-left: 115px;
+  margin-top: 225px;
+  -moz-user-select: none; /* These user-select properties are inheritable, used to prevent text selection */
+  -webkit-user-select: none;
+  -ms-user-select: none; /* From IE10 only */
+  user-select: none; /* Not valid CSS yet, as of July 2012 */
+  -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
+  user-drag: none;
+}
+
+.clickbutton:active {
+  animation: heart-pulse 0.1s ease-out;
+}
+
+@keyframes heart-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
